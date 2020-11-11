@@ -1,7 +1,7 @@
 # Liga WebApp
-Das Wettbewerbsmodell („Liga-Modell“) wurde vor über 10 Jahren von EGC Eurogroup Consulting AG als ein Konzept der Vertriebsmobilisierung entwickelt, um Vertriebsmitarbeiter und -Teams (z.B. Filialteams) dazu zu animieren, die eigenen Kräfte zu mobilisieren, um besser als andere Teams abzuschneiden.
+Das Wettbewerbsmodell („Liga-Modell“) wurde  unterstütztvor über 10 Jahren von EGC Eurogroup Consulting AG als ein Konzept der Vertriebsmobilisierung entwickelt, um Vertriebsmitarbeiter und -Teams (z.B. Filialteams) dazu zu animieren, die eigenen Kräfte zu mobilisieren, um besser als andere Teams abzuschneiden.
 
-Die Liga WebApp ist ein Informations-Tool, dass dieses Modell unterstützt als Webanwendung für Mobile Geräte unterstützt.
+Die Liga WebApp ist ein Informations-Tool, dass dieses Modell als Webanwendung für Mobile Geräte unterstützt.
 
 https://www.eurogroupconsulting.de/expertise/vertriebsmobilisierung/
 
