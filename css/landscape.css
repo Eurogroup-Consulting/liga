@@ -1,0 +1,8 @@
+@media only screen and (orientation:landscape){
+    #turn{ display:none; }
+    #container{ display:block; }
+  }
+@media only screen and (orientation:portrait){
+    #turn{ display:block; }
+    #container{ display:none; }
+}
