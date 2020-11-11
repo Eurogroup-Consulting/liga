@@ -43,10 +43,15 @@ Andernfalls folgt hier ein Beispiel für den Unterordner "Liga" mit XAMPP:
   2.1.  Fügen Sie den heruntergeladenen Code in den gewünschten Ordner  <br><br>
   2.2.  Öffnen Sie die Datei httpd.conf und passen Sie die Zeilen DocumentRoot und die davon     gefolgte `Directory` an. Bspw.</br>
   `DocumentRoot "C:\WEBSERVERPATH\Liga"`</br>
-  `Directory "C:\WEBSERVERPATH\Liga"  `
+    ```
+    <Directory "C:\WEBSERVERPATH\Liga" >
+    ```
+
 <br><br>
   2.3  Passen Sie in der Datei `/layout/header.html` die angegebene `base` an. Bspw. </br> 
-  `<base href="/Liga/" >`
+  ```html
+  <base href="/Liga/" >
+  ```
   2.4  Passen Sie in der Datei `auth.php` die angegebene `baseURL` an. Bspw. </br> 
   `$baseURL = "/Liga";`
 
