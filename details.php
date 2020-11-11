@@ -2,6 +2,7 @@
     require_once 'config.php';
     require_once 'auth.php';
     require_once 'liga_db_functions.php';
+    require_once 'details_db_functions.php';
 
     
     if (isset($_GET['teamid'])){

@@ -1,7 +1,7 @@
 <?php
-    require_once 'incl_standard.php';
-    require_once 'check_auth.php';
-    require_once 'lib_liga_db.php';
+    require_once 'config.php';
+    require_once 'auth.php';
+    require_once 'liga_db_functions.php';
 
 function getOtherTeams($TeamID,$LigaID, $kum){
     $mySqlConnection=  db_connect(); 

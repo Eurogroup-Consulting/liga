@@ -90,7 +90,7 @@ Define('QUERY_KUMKW',
   	teams.ID AS TeamID,
   	teams.Teamname,
   	SUM( daten.Anzahl ) AS sAnzhal,
-  	ROUND( SUM( daten.Punkte / mak.mak ) , 2 ) AS Punkte
+  	ROUND( SUM( daten.Punkte / mak.MAK ) , 2 ) AS Punkte
   FROM
 	  ligen
 	INNER JOIN saisons
@@ -105,7 +105,7 @@ Define('QUERY_KUMKW',
 	INNER JOIN mak
 	 ON spielwochen.ID = mak.SpielWochenID
 	  AND mak.TeamID = teams.ID
-	INNER JOIN Daten
+	INNER JOIN daten
 	 ON mak.SpielWochenID = daten.SpielwochenID
 	  AND mak.TeamID = daten.TeamID
 	INNER JOIN zuordnung
@@ -125,7 +125,7 @@ ORDER BY
 	saisons.ID ASC,
 	ligen.ID ASC,
 	spielwochen.SpielwochenNr ASC,
-	ROUND(SUM(daten.Punkte/mak.mak),2) DESC"
+	ROUND(SUM(daten.Punkte/mak.MAK),2) DESC"
 );
     
 # **** QUERY_RANKING *****************
@@ -201,7 +201,7 @@ FROM
    INNER JOIN mak
     ON spielwochen.ID = mak.SpielWochenID
      AND mak.TeamID = teams.ID
-   INNER JOIN Daten
+   INNER JOIN daten
     ON mak.SpielWochenID = daten.SpielwochenID
      AND mak.TeamID = daten.TeamID
    INNER JOIN zuordnung
@@ -246,7 +246,7 @@ INNER JOIN spielwochen
 INNER JOIN mak
  ON spielwochen.ID = mak.SpielWochenID
   AND mak.TeamID = teams.ID
-INNER JOIN Daten
+INNER JOIN daten
  ON mak.SpielWochenID = daten.SpielwochenID
   AND mak.TeamID = daten.TeamID
 INNER JOIN zuordnung
@@ -294,7 +294,7 @@ FROM
    INNER JOIN mak
     ON spielwochen.ID = mak.SpielWochenID
      AND mak.TeamID = teams.ID
-   INNER JOIN Daten
+   INNER JOIN daten
     ON mak.SpielWochenID = daten.SpielwochenID
      AND mak.TeamID = daten.TeamID
    INNER JOIN zuordnung
@@ -364,7 +364,7 @@ INNER JOIN spielwochen
 INNER JOIN mak
  ON spielwochen.ID = mak.SpielWochenID
   AND mak.TeamID = teams.ID
-INNER JOIN Daten
+INNER JOIN daten
  ON mak.SpielWochenID = daten.SpielwochenID
   AND mak.TeamID = daten.TeamID
 INNER JOIN zuordnung
