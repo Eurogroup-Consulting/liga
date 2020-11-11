@@ -4293,7 +4293,7 @@ INSERT INTO `account` ( `client_id`, `email`, `pwdhash`, `Liga`, `token`) VALUES
 --
 
 INSERT INTO `ligen` (`ID`, `LigaName`, `AktSaisonID`, `Kommentar`) VALUES
-(1, 'Pilotliga17>', 1, 'Zur Pilotierung'),
+(1, 'Pilotliga', 1, 'Zur Pilotierung'),
 (17, 'Noch ein Test', 1, 'kann man löschen');
 
 --
@@ -4491,7 +4491,7 @@ INSERT INTO `mak` (`SpielWochenID`, `TeamID`, `MAK`) VALUES
 --
 
 INSERT INTO `saisons` (`ID`, `SaisonBezeichnung`, `SaisonBegin`, `SaisonEnde`) VALUES
-(1, 'Pilotierung/2017!', '2017-05-22', '2017-10-27');
+(1, 'Pilotierung', '2017-05-22', '2017-10-27');
 
 --
 -- Dumping data for table `spielwochen`
