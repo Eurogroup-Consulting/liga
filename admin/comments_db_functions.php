@@ -3,7 +3,7 @@
 require_once '../liga_db_functions.php'; //enthält Funktionen zur Datenbankverbindung
 
 
-
+// lädt alle Kommentare
 function getComments()
 {
         $dbCon = db_connect();
@@ -15,6 +15,7 @@ function getComments()
         return $comments;
 }
 
+// Aktualisiert/Erstellt/Löscht die Kommentare 
 function updateComments($comments)
 {
         $error = false;
@@ -29,9 +30,11 @@ function updateComments($comments)
                         continue;
                 }
 
+                // überprüft ob alle daten für einen Kommentar vorhanden sind.
                 if (empty($comment["Teaser"]) &&  empty($comment["Kommentar"]) && empty($comment["Datum"])) {
                         continue;
                 }
+
                 if (empty($comment["Teaser"]) ||  empty($comment["Kommentar"]) || empty($comment["Datum"])) {
                         $error = "Leider waren die eingegebenen Daten nicht vollständig.";
                         continue;
@@ -45,8 +48,10 @@ function updateComments($comments)
                         }
                         continue;
                 }
-                $datum = date("Y-m-d", strtotime($comment["Datum"]));
 
+                // Umwandlng des eingegebenen Datums
+                $datum = date("Y-m-d", strtotime($comment["Datum"]));
+                // Updatet den übergebenen Kommentar
                 $dbCon = db_connect();
                 $qrycomment = "UPDATE kommentare set Teaser=?, Kommentar=?, Datum=? where ID=?";
                 $stmnt = $dbCon->prepare($qrycomment);
@@ -59,7 +64,7 @@ function updateComments($comments)
         return $error;
 }
 
-
+// löscht den gewählten Kommentar
 function deletecomment($comment)
 {
         $success = true;
@@ -74,9 +79,10 @@ function deletecomment($comment)
         return $success;
 }
 
-
+// erstellt einen neuen Kommentar
 function createComment($comment)
 {
+        // Umwandlng des eingegebenen Datums
         $datum = date("Y-m-d", strtotime($comment["Datum"]));
 
         $dbCon = db_connect();

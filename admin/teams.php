@@ -1,6 +1,7 @@
 <?php
-require_once '../config.php';
-require_once '../auth.php';
+require_once '../config.php'; // Enthält Session Funktionen und StandardFarben
+require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
+// für nicht admins ist der Zugang nicht gestattet
 if (!isAdmin()) {
     die();
 }
@@ -18,7 +19,7 @@ if (isset($_POST["action"]) && isset($_POST["teams"]) && $_POST["action"] == "Sp
     include '../layout/header.html';
     ?>
 
-    <title>Liga Administration - User</title>
+    <title>Liga Administration - Teams</title>
 </head>
 
 <body>

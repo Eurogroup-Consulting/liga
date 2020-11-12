@@ -1,6 +1,6 @@
 <?php
-require_once '../config.php';
-require_once '../auth.php';
+require_once '../config.php'; // Enthält Session Funktionen und StandardFarben
+require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
 if (!isAdmin()) {
     die();
 }

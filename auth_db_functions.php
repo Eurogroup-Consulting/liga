@@ -2,6 +2,7 @@
 <?php 
 require_once 'liga_db_functions.php';
 
+// prüft ob für den user ein token hinterlegt ist und dieser übereinstimmt
 function checktoken(){
     
     $token=isset($_COOKIE["LigaToken"])?$_COOKIE["LigaToken"]:"";
@@ -18,7 +19,7 @@ function checktoken(){
         $stmnt->fetch();
         
         if ($stmnt->num_rows==1){                                
-            
+            // setzt die benötigten session daten
             $maxSaisonID=max_saison();
             $_SESSION['login_ok']="OK"; 
             $_SESSION['userid']=$uid;
@@ -37,7 +38,8 @@ function checktoken(){
         $msql->close();
     }
 }
-    
+
+// login für bereits existierende nutzer
 function liga_login($login, $pwd) {
     $msql=  db_connect();
     
@@ -51,6 +53,7 @@ function liga_login($login, $pwd) {
     $stmnt->fetch();
 
     if ($pwd5==md5($pwd)){
+        // setzt die benötigten session daten
         $_SESSION['login_ok']="OK"; 
         $_SESSION['userid']=$uid;
         $_SESSION['userLiga']=getUserLiga($maxSaisonID,$teamid);
@@ -66,6 +69,7 @@ function liga_login($login, $pwd) {
     }
 }
 
+// erlaubt es neuen nutzern sich zu registrieren
 function liga_register($email, $pwd)
 {
     $md5pwd = md5($pwd);
@@ -81,6 +85,7 @@ function liga_register($email, $pwd)
     }
 }
 
+// erzeugt einen eindeutigen token und füht ihn in die datenbank ein
 function set_token($login) {
        
     $token=uniqid('',true); //Besserer (eindeutigerer) Token
@@ -100,8 +105,7 @@ function set_token($login) {
    }
 }
 
-
-
+// logt einen user aus 
 function liga_logout(){
      session_destroy();
      setcookie("LigaToken","");

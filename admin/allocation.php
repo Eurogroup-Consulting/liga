@@ -1,13 +1,15 @@
 <?php
 require_once '../config.php'; // Enthält Session Funktionen und StandardFarben
 require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
+
+// für nicht admins ist der Zugang nicht gestattet
 if (!isAdmin()) {
     die();
 }
 require_once 'allocation_db_functions.php'; // Enthält Zuordnungs-Datenbank-Funktionen 
 $success = false;
 
-// Diese Funktion wird nur ncah dem Absenden der Formulardaten aufgerufen 
+// Diese Funktion wird nur naah dem Absenden der Formulardaten aufgerufen 
 if (isset($_POST["action"]) && isset($_POST["allocations"]) && $_POST["action"] == "Speichern") {
     $success = updateAllocations($_POST["allocations"]);
 }
@@ -83,7 +85,7 @@ if (isset($_POST["action"]) && isset($_POST["allocations"]) && $_POST["action"] 
                                 <?php
                                 }
                                 ?>
-                                <!-- erlaiubt das Anlegen einer neuen Zuordnung -->
+                                <!-- erlaubt das Anlegen einer neuen Zuordnung -->
                                 <tr>
                                     <td class="text-truncate">
                                         <input type="text" class="form-control" name="allocations[<?= $key + 1 ?>][Kurzbezeichnung]" value="">

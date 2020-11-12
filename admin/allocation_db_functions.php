@@ -93,6 +93,7 @@ function deleteAllocation($allocation)
     return $success;
 }
 
+// prüft ob die übergebene allocation in benutzung ist
 function checkAllocationUsage($allocation)
 {
     $dbCon = db_connect();

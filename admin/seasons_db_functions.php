@@ -1,7 +1,7 @@
 <?php
 
 require_once '../liga_db_functions.php';
-
+// lädt alle saisons
 function getSeasons()
 {
     $dbCon = db_connect();
@@ -13,10 +13,12 @@ function getSeasons()
     return $seasons;
 }
 
+// Erstellt/aktualisiert/löscht alle Saisons
 function updateSeasons($seasons)
 {
     $error = true;
     foreach ($seasons as $season) {
+        // zu löschende Saisons werden gesondert verarbeitet 
         if (isset($season['delete']) &&  $season['delete'] === "1") {
             $success = deleteSeason($season);
             if (!$success && $error === true) {
@@ -30,7 +32,7 @@ function updateSeasons($seasons)
             }
             continue;
         }
-
+        // zu erstellende Saisons werden gesondert verarbeitet 
         if (isset($season['add']) &&  $season['add'] == true) {
             $success = createSeason($season);
             if (!$success && $error === true) {
@@ -53,6 +55,7 @@ function updateSeasons($seasons)
     return $error;
 }
 
+// löscht die gewählte saison und die dazugehörigen spielwochen
 function deleteSeason($season)
 {
     if (checkUsage($season) != 0) {
@@ -75,6 +78,8 @@ function deleteSeason($season)
     }
     return true;
 }
+
+// prüft ob die saison genutzt wird
 function checkUsage($season)
 {
     $dbCon = db_connect();
@@ -86,7 +91,7 @@ function checkUsage($season)
     $count = $res->fetch_assoc();
     return $count["isUsed"];
 }
-
+// erstellt eine neue saison
 function createSeason($season)
 {
     $start = date("Y-m-d", strtotime($season["SaisonBegin"]));
@@ -103,7 +108,7 @@ function createSeason($season)
         return false;
     }
 }
-
+// erstellt alle spielwochen für eine saison
 function createWeeks($season, $id)
 {
     $success = true;
