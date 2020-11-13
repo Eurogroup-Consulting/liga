@@ -3,6 +3,7 @@
     require_once 'auth.php';
     require_once 'liga_db_functions.php';
 
+// lädt die punkte aller konkurierenden Teams innerhalb dieser liga
 function getOtherTeams($TeamID,$LigaID, $kum){
     $mySqlConnection=  db_connect(); 
     if($kum){
@@ -21,7 +22,7 @@ function getOtherTeams($TeamID,$LigaID, $kum){
     }
     return $keyedOther;   
 }
-
+// lädt die punkte des eigenen Teams innerhalb dieser liga
 function getTeamDetails($TeamID,$LigaID,$kum){
     $mySqlConnection=  db_connect(); 
     if($kum){

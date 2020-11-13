@@ -32,6 +32,7 @@
 <?php    include 'layout/header.html';    ?>
     <title>Team Details</title>
     <script type="text/javascript">
+    // ändert die url beim umschalten zwischen kumuliert und nicht kumuliert
         function changeURL(field){
                 value = field.checked?1:0
                 url = location.href

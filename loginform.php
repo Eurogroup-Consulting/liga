@@ -62,8 +62,6 @@
                 }
                 if ($email!="" && $loginsucess==FALSE){
                     echo ('<p class="alert alert-danger">Benutzername oder Passwort falsch</p>');
-                    //echo ('<div class="alert alert-danger"> A simple danger alert—check it out! 
-                  // </div>')
                 }
                 ?>
 

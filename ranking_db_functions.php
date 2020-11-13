@@ -2,6 +2,7 @@
     
 require_once 'liga_db_functions.php';
  
+// lädt die aktuellen daten des rankings
 function rankdata($ligaid) {
     
     $dbConRanking= db_connect();
