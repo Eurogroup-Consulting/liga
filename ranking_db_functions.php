@@ -70,3 +70,24 @@ function rankdata($ligaid) {
     return $return;  
 }
 
+function getLigaInfos(){
+    $dbCon= db_connect();
+    $qryLigen="SELECT ID, LigaName FROM ligen ORDER By LigaName";
+    $stligen=$dbCon->prepare($qryLigen);
+    $stligen->execute();
+    $res = $stligen->get_result();
+    $leagues = $res->fetch_all(MYSQLI_ASSOC);
+    return $leagues;
+
+}
+
+function getRanking($ligaid){
+    $dbCon= db_connect();
+    $qryRanking=QUERY_RANKING; //Definiert in liga_db_functions
+    $stmnt=$dbCon->prepare($qryRanking); 
+    $stmnt->bind_param('i',$ligaid);
+    $stmnt->execute();
+    $res = $stmnt->get_result();
+    $ranks = $res->fetch_all(MYSQLI_ASSOC);
+    return $ranks;
+}
