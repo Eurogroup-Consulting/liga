@@ -1,7 +1,7 @@
 <?php
     require_once 'config.php';
     require_once 'auth.php';
-    require_once 'liga_db_functions.php';
+    require_once 'lib_liga.php';
 
 // lädt die punkte aller konkurierenden Teams innerhalb dieser liga
 function getOtherTeams($TeamID,$LigaID, $kum){

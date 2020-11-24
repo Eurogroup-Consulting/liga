@@ -5,7 +5,7 @@ require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rec
 if (!isAdmin()) {
     die();
 }
-require_once 'seasons_db_functions.php';
+require_once 'lib_seasons.php';
 $success = false;
 if (isset($_POST["action"]) && isset($_POST["season"]) && $_POST["action"] == "Speichern") {
     $success = updateSeasons($_POST["season"]);

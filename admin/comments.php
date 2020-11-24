@@ -6,7 +6,7 @@ require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rec
 if (!isAdmin()) {
     die();
 }
-require_once 'comments_db_functions.php';
+require_once 'lib_comments.php';
 
 
 $success = false;

@@ -1,6 +1,6 @@
 <?php
     
-require_once 'liga_db_functions.php';
+require_once 'lib_liga.php';
  
 // lädt die aktuellen daten des rankings
 function rankdata($ligaid) {
@@ -8,7 +8,7 @@ function rankdata($ligaid) {
     $dbConRanking= db_connect();
     
 
-    $qryTeams=QUERY_TEAMS; //Definiert in liga_db_functions
+    $qryTeams=QUERY_TEAMS; //Definiert in lib_liga
     $stmnt_Teams=$dbConRanking->prepare($qryTeams);
     $stmnt_Teams->bind_param('i',$ligaid);
     $stmnt_Teams->execute();
@@ -18,7 +18,7 @@ function rankdata($ligaid) {
         $teams[$team["TeamID"]]=$team["Teamname"];
     }
 
-    $qryRanking=QUERY_KUMKW; //Definiert in liga_db_functions
+    $qryRanking=QUERY_KUMKW; //Definiert in lib_liga
     $stmnt=$dbConRanking->prepare($qryRanking); 
     $stmnt->bind_param('i',$ligaid);
     $stmnt->execute();
@@ -83,7 +83,7 @@ function getLigaInfos(){
 
 function getRanking($ligaid){
     $dbCon= db_connect();
-    $qryRanking=QUERY_RANKING; //Definiert in liga_db_functions
+    $qryRanking=QUERY_RANKING; //Definiert in lib_liga
     $stmnt=$dbCon->prepare($qryRanking); 
     $stmnt->bind_param('i',$ligaid);
     $stmnt->execute();

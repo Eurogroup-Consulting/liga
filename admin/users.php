@@ -5,8 +5,8 @@ require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rec
 if (!isAdmin()) {
     die();
 }
-require_once 'user_db_functions.php';
-require_once 'teams_db_functions.php';
+require_once 'lib_user.php';
+require_once 'lib_teams.php';
 $success = false;
 if (isset($_POST["action"]) && isset($_POST["users"]) && $_POST["action"] == "Speichern") {
     $success = updateUsers($_POST["users"]);

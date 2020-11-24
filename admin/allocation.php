@@ -6,7 +6,7 @@ require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rec
 if (!isAdmin()) {
     die();
 }
-require_once 'allocation_db_functions.php'; // Enthält Zuordnungs-Datenbank-Funktionen 
+require_once 'lib_allocation.php'; // Enthält Zuordnungs-Datenbank-Funktionen 
 $success = false;
 
 // Diese Funktion wird nur naah dem Absenden der Formulardaten aufgerufen 

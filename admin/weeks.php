@@ -5,7 +5,7 @@ require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rec
 if (!isAdmin()) {
     die();
 }
-require_once 'weeks_db_functions.php';
+require_once 'lib_weeks.php';
 $success = false;
 
 
@@ -14,7 +14,7 @@ if (isset($_POST["action"]) && isset($_POST["week"])  && $_POST["action"] == "Sp
 }
 
 if (isset($_POST["deleteMak"])) {
-    require_once 'maks_db_functions.php';
+    require_once 'lib_maks.php';
     $makSuccess = deleteMaksByWeek($_POST["deleteMak"]);
 }
 if (isset($_POST["deleteData"])) {

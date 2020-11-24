@@ -5,7 +5,7 @@ require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rec
 if (!isAdmin()) {
     die();
 }
-require_once 'teams_db_functions.php';
+require_once 'lib_teams.php';
 $success = false;
 if (isset($_POST["action"]) && isset($_POST["teams"]) && $_POST["action"] == "Speichern") {
     $success = updateTeams($_POST["teams"]);

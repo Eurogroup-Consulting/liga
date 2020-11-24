@@ -1,8 +1,8 @@
 <?php
     require_once '../config.php';
-    require_once '../auth_db_functions.php';
-    require_once '../admin/user_db_functions.php';
-    require_once "init_db_functions.php";
+    require_once '../lib_auth.php';
+    require_once '../admin/lib_user.php';
+    require_once "lib_init_db.php";
 ?>
 <!doctype html>
 <html>

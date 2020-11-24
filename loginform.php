@@ -1,6 +1,6 @@
 <?php 
     require_once 'config.php'; // Liga-Standard immer einbinden !!
-    require_once 'auth_db_functions.php'; // enthält PHP Liga-Login-Funktion
+    require_once 'lib_auth.php'; // enthält PHP Liga-Login-Funktion
 ?>
 
 <!doctype html>

@@ -1,8 +1,8 @@
 <?php
     require_once 'config.php';
     require_once 'auth.php';
-    require_once 'liga_db_functions.php';
-    require_once 'ranking_db_functions.php';
+    require_once 'lib_liga.php';
+    require_once 'lib_ranking.php';
     
     if (isset($_SESSION['userLiga'])){
         $ligaid=$_SESSION['userLiga'];

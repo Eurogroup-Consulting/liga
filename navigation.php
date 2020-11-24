@@ -1,5 +1,5 @@
 <?php !defined("PHP_BASE_PATH") && define("PHP_BASE_PATH", dirname(__FILE__));?> 
-<?php include_once PHP_BASE_PATH.'/auth_db_functions.php'; ?>
+<?php include_once PHP_BASE_PATH.'/lib_auth.php'; ?>
 <?php include_once PHP_BASE_PATH.'/auth.php'; ?>
 
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" style="min-height:60px; padding-top: 10px; padding-left: 18px; padding-right: 10px;">

@@ -5,10 +5,10 @@ require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rec
 if (!isAdmin()) {
     die();
 }
-require_once 'import_db_functions.php';; // Enthält Punkte-Import-Datenbank-Funktionen 
-require_once 'seasons_db_functions.php'; // Enthält Saison-Datenbank-Funktionen
-require_once 'maks_db_functions.php'; // Enthält MAK-Datenbank-Funktionen (inklusive der Spielwochen)
-require_once '../liga_db_functions.php'; // Enthält Grundlegenden Datenbank Funktionen
+require_once 'lib_import.php';; // Enthält Punkte-Import-Datenbank-Funktionen 
+require_once 'lib_seasons.php'; // Enthält Saison-Datenbank-Funktionen
+require_once 'lib_maks.php'; // Enthält MAK-Datenbank-Funktionen (inklusive der Spielwochen)
+require_once '../lib_liga.php'; // Enthält Grundlegenden Datenbank Funktionen
 
 if (isset($_POST["action"]) && isset($_FILES["csvFile"]) && !empty($_FILES["csvFile"]["tmp_name"]) && $_POST["week"] && $_POST["action"] == "Speichern") {
     $errors = importCSV($_FILES["csvFile"]["tmp_name"], $_POST["week"]);
