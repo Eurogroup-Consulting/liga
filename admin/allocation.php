@@ -1,5 +1,5 @@
 <?php
-require_once '../config.php'; // Enthält Session Funktionen und StandardFarben
+require_once '../config/default.php'; // Enthält Session Funktionen und StandardFarben
 require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
 
 // für nicht admins ist der Zugang nicht gestattet

@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+require_once 'config/default.php';
 require_once 'auth.php';
 ?>
 <!doctype html>

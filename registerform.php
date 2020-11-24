@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php'; // Liga-Standard immer einbinden !!
+require_once 'config/default.php'; // Liga-Standard immer einbinden !!
 require_once 'lib_auth.php'; // enthält PHP Liga-register-Funktion
 ?>
 

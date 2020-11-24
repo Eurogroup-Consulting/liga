@@ -1,8 +1,8 @@
 <?php
-    require_once '../config.php';
+    require_once '../config/default.php';
     require_once '../lib_auth.php';
     require_once '../admin/lib_user.php';
-    require_once "liga_config.php";
+    require_once '../config/db_config.php';
 
 $mSqlObj= @new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, null, null);
 

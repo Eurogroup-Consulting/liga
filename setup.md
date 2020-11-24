@@ -59,7 +59,7 @@ Andernfalls folgt hier ein Beispiel für den Unterordner "Liga" mit XAMPP:
 ###  Erstellen der benötigten Datenbank 
 
 1. Erstellen Sie Die Datenbank `liga_db`. 
-2. Konfigurieren Sie in der Datei `/setup/liga_config.php` die Datenbankverbindung.
+2. Konfigurieren Sie in der Datei `/config/db_config.php` die Datenbankverbindung.
 Hierzu passen Sie bitte die folgenden Felder an:</br>
 `DB_USER` - Username mit Datenbank Zugriff auf `liga_db` </br>
 `DB_PASSWORD` - Datenbank Passwort</br>

@@ -1,5 +1,5 @@
 <?php
-    require_once '../config.php';
+    require_once '../config/default.php';
     require_once '../lib_auth.php';
     require_once '../admin/lib_user.php';
     require_once "lib_init_db.php";
