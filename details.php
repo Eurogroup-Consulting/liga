@@ -1,8 +1,8 @@
 <?php
     require_once 'config/default.php';
     require_once 'auth.php';
-    require_once 'lib_liga.php';
-    require_once 'lib_details.php';
+    require_once 'lib/lib_liga.php';
+    require_once 'lib/lib_details.php';
 
     
     if (isset($_GET['teamid'])){

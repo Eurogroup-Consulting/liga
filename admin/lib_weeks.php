@@ -1,6 +1,6 @@
 <?php
 
-require_once '../lib_liga.php'; //enthält Funktionen zur Datenbankverbindung
+require_once '../../lib/lib_liga.php'; //enthält Funktionen zur Datenbankverbindung
 
 // Holt alle Spielwochen inkl. Mak und Datensatz Anzahl einer Saison aus der Datenbank
 function getWeeksBySeason($seasonID)

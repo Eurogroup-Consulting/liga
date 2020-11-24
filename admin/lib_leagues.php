@@ -1,6 +1,6 @@
 <?php
 
-require_once '../lib_liga.php';
+require_once '../../lib/lib_liga.php';
 // lädt alle ligen
 function getLeagues()
 {

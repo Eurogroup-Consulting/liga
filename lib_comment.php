@@ -1,5 +1,5 @@
 <?php
-require_once 'lib_liga.php';
+require_once 'lib/lib_liga.php';
 // lädt den aktuellsten kommentar 
 function getComments(){
     $dbCon = db_connect();

@@ -5,8 +5,8 @@ require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rec
 if (!isAdmin()) {
     die();
 }
-require_once 'lib_leagues.php';
-require_once 'lib_seasons.php';
+require_once '../lib/lib_leagues.php';
+require_once '../lib/lib_seasons.php';
 $success = false;
 
 if (isset($_POST["action"]) && isset($_POST["league"]) && $_POST["action"] == "Speichern") {

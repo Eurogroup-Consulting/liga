@@ -1,8 +1,8 @@
 <?php
 require_once 'config/default.php';
 require_once 'auth.php';
-require_once 'lib_liga.php';
-require_once 'lib_comment.php';
+require_once 'lib/lib_liga.php';
+require_once 'lib/lib_comment.php';
 
 $comment = getComments()
 ?>

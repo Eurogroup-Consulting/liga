@@ -1,7 +1,7 @@
 <?php
 
-require_once '../lib_liga.php'; //enthält Funktionen zur Datenbankverbindung
-require_once 'lib_teams.php'; //enthält Funktionen zur Teamverwaltung
+require_once '../../lib/lib_liga.php'; //enthält Funktionen zur Datenbankverbindung
+require_once '../lib/lib_teams.php'; //enthält Funktionen zur Teamverwaltung
 
 // Wird genutzt um Punktewertungen aus einer CSV Datei zu importieren
 function importCSV($filename, $week)

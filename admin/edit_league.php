@@ -4,10 +4,10 @@ require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rec
 if (!isAdmin()) {
     die();
 }
-require_once 'lib_leagues.php';
-require_once 'lib_seasons.php';
-require_once 'lib_teams.php';
-require_once 'lib_team_division.php';
+require_once '../lib/lib_leagues.php';
+require_once '../lib/lib_seasons.php';
+require_once '../lib/lib_teams.php';
+require_once '../lib/lib_team_division.php';
 $success = false;
 
 

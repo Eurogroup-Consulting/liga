@@ -1,8 +1,8 @@
 <?php
     require_once 'config/default.php';
     require_once 'auth.php';
-    require_once 'lib_liga.php';  
-    include 'lib_ranking.php';
+    require_once 'lib/lib_liga.php';  
+    include 'lib/lib_ranking.php';
 ?>
 <!doctype html>
 <html>

@@ -5,9 +5,9 @@ require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rec
 if (!isAdmin()) {
     die();
 }
-require_once 'lib_seasons.php'; // Enthält Saison-Datenbank-Funktionen 
-require_once 'lib_team_division.php'; // Enthält Teameinteilungs-Datenbank-Funktionen
-require_once 'lib_maks.php'; // Enthält MAK-Datenbank-Funktionen
+require_once '../lib/lib_seasons.php'; // Enthält Saison-Datenbank-Funktionen 
+require_once '../lib/lib_team_division.php'; // Enthält Teameinteilungs-Datenbank-Funktionen
+require_once '../lib/lib_maks.php'; // Enthält MAK-Datenbank-Funktionen
 $success = false;
 
 // Diese Funktion wird nur nach dem Absenden der Formulardaten aufgerufen 

@@ -1,6 +1,6 @@
 <?php
 
-require_once '../lib_liga.php'; //enthält Funktionen zur Datenbankverbindung
+require_once '../lib/lib_liga.php'; //enthält Funktionen zur Datenbankverbindung
 
 // Wird genutzt um MAKs mit den entsprechenden Teamnamen anzuzeigen
 function getMAKsWithTeamName()

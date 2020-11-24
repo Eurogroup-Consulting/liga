@@ -1,6 +1,6 @@
 <?php
 
-require_once '../lib_liga.php';
+require_once '../../lib/lib_liga.php';
 
 // Wird genutzt um Teameinteilungen einzelner Ligen gezielt zu laden
 function getTeamsDivisionWithName()
