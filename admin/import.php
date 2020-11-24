@@ -71,7 +71,7 @@ $activeWeek = isset($_POST['week']) ? $_POST['week'] : '';
      
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <a href="Liga_Vorlage.csv" class="btn btn-outline-secondary"  download role="button">Vorlage herunterladen</a>
+                                <a href="assets/csv/Liga_Vorlage.csv" class="btn btn-outline-secondary"  download role="button">Vorlage herunterladen</a>
                             </div>
  
                             <div class="custom-file">

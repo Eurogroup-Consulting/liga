@@ -36,10 +36,10 @@
 ?>
 
 <!-- Custom styles for this template -->
-<link href="./css/liga_signin.css" rel="stylesheet">
+<link href="./assets/css/liga_signin.css" rel="stylesheet">
 <body class="text-center">
         <form class="form-signin" action="./loginform.php" method="POST">
-            <img class="mb-4" src="./images/LigaLogo60r.png" alt="" width="60" height="60">
+            <img class="mb-4" src="./assets/images/LigaLogo60r.png" alt="" width="60" height="60">
             <h1 class="h3 mb-3 font-weight-normal">Liga-Login</h1>
             <label class="sr-only">E-Mail:</label>
             <input class="form-control" name="loginname" type="email" placeholder="Email-Addresse" value="<?php echo $email?>" required autofocus>

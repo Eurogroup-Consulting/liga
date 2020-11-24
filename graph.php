@@ -8,7 +8,7 @@
 <html>
 <head>
 <?php    include 'layout/header.html';    ?>
-    <link href="css/landscape.css" rel="stylesheet">
+    <link href="assets/css/landscape.css" rel="stylesheet">
 
 
 
