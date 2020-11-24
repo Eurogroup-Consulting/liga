@@ -1,6 +1,6 @@
 <?php
 
-require_once '../lib/lib_liga.php'; //enthält Funktionen zur Datenbankverbindung
+require_once dirname(__FILE__) .'/lib_liga.php'; //enthält Funktionen zur Datenbankverbindung
 
 
 // lädt alle Kommentare

@@ -1,5 +1,7 @@
 <?php
-    require_once 'config/db_config.php';
+
+
+    require_once dirname(__FILE__) .'/../config/db_config.php';
 
     // erstellt eine verbindung zur datenbank
     function db_connect(){
@@ -7,7 +9,7 @@
         $db_socket=null;
         $db_port=null;
          
-        //Definiert duinrch config/db_config.php 
+        //Definiert duinrch ../config/db_config.php 
         $mSqlObj=new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, $db_port, $db_socket);
         
         // Lokale Variablen

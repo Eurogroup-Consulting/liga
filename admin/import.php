@@ -1,14 +1,14 @@
 <?php
-require_once '../config/default.php'; // Enthält Session Funktionen und StandardFarben
-require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
+require_once dirname(__FILE__) .'/../config/default.php'; // Enthält Session Funktionen und StandardFarben
+require_once dirname(__FILE__) .'/../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
 // für nicht admins ist der Zugang nicht gestattet
 if (!isAdmin()) {
     die();
 }
-require_once '../lib/lib_import.php';; // Enthält Punkte-Import-Datenbank-Funktionen 
-require_once '../lib/lib_seasons.php'; // Enthält Saison-Datenbank-Funktionen
-require_once '../lib/lib_maks.php'; // Enthält MAK-Datenbank-Funktionen (inklusive der Spielwochen)
-require_once '../../lib/lib_liga.php'; // Enthält Grundlegenden Datenbank Funktionen
+require_once dirname(__FILE__) .'/../lib/lib_import.php';; // Enthält Punkte-Import-Datenbank-Funktionen 
+require_once dirname(__FILE__) .'/../lib/lib_seasons.php'; // Enthält Saison-Datenbank-Funktionen
+require_once dirname(__FILE__) .'/../lib/lib_maks.php'; // Enthält MAK-Datenbank-Funktionen (inklusive der Spielwochen)
+require_once dirname(__FILE__) .'/../lib/lib_liga.php'; // Enthält Grundlegenden Datenbank Funktionen
 
 if (isset($_POST["action"]) && isset($_FILES["csvFile"]) && !empty($_FILES["csvFile"]["tmp_name"]) && $_POST["week"] && $_POST["action"] == "Speichern") {
     $errors = importCSV($_FILES["csvFile"]["tmp_name"], $_POST["week"]);
@@ -25,14 +25,14 @@ $activeWeek = isset($_POST['week']) ? $_POST['week'] : '';
 
 <head>
     <?php
-    include '../layout/header.html';
+    include dirname(__FILE__). '/../layout/header.html';
     ?>
     <title>Liga Administration - CSV Import</title>
 </head>
 
 <body>
     <!-- NAVIGATION -->
-    <?php include "../navigation.php"; ?>
+    <?php include dirname(__FILE__). "/../navigation.php"; ?>
 
     <!-- CONTENT -->
     <div class="container">
@@ -99,7 +99,7 @@ $activeWeek = isset($_POST['week']) ? $_POST['week'] : '';
 </body>
 <footer>
     <?php
-    include '../layout/footer.html';
+    include dirname(__FILE__). '/../layout/footer.html';
     ?>
 </footer>
 

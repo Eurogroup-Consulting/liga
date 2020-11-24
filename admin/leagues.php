@@ -1,12 +1,12 @@
 <?php
-require_once '../config/default.php'; // Enthält Session Funktionen und StandardFarben
-require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
+require_once dirname(__FILE__) .'/../config/default.php'; // Enthält Session Funktionen und StandardFarben
+require_once dirname(__FILE__) .'/../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
 // für nicht admins ist der Zugang nicht gestattet
 if (!isAdmin()) {
     die();
 }
-require_once '../lib/lib_leagues.php';
-require_once '../lib/lib_seasons.php';
+require_once dirname(__FILE__) .'/../lib/lib_leagues.php';
+require_once dirname(__FILE__) .'/../lib/lib_seasons.php';
 $success = false;
 
 if (isset($_POST["action"]) && isset($_POST["league"]) && $_POST["action"] == "Speichern") {
@@ -18,7 +18,7 @@ if (isset($_POST["action"]) && isset($_POST["league"]) && $_POST["action"] == "S
 
 <head>
     <?php
-    include '../layout/header.html';
+    include dirname(__FILE__). '/../layout/header.html';
     ?>
 
     <title>Liga Administration - Ligen</title>
@@ -26,7 +26,7 @@ if (isset($_POST["action"]) && isset($_POST["league"]) && $_POST["action"] == "S
 
 <body>
     <!-- NAVIGATION -->
-    <?php include "../navigation.php"; ?>
+    <?php include dirname(__FILE__). "/../navigation.php"; ?>
 
     <!-- CONTENT -->
     <div class="container">
@@ -126,7 +126,7 @@ if (isset($_POST["action"]) && isset($_POST["league"]) && $_POST["action"] == "S
 </body>
 <footer>
     <?php
-    include '../layout/footer.html';
+    include dirname(__FILE__). '/../layout/footer.html';
     ?>
 
 </footer>

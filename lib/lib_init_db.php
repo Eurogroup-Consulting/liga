@@ -1,8 +1,8 @@
 <?php
-    require_once '../config/default.php';
-    require_once '../lib/lib_auth.php';
-    require_once '../lib/lib_user.php';
-    require_once '../config/db_config.php';
+    require_once dirname(__FILE__) .'/../config/default.php';
+    require_once dirname(__FILE__) .'/lib_auth.php';
+    require_once dirname(__FILE__) .'/lib_user.php';
+    require_once dirname(__FILE__) .'/../config/db_config.php';
 
 $mSqlObj= @new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, null, null);
 

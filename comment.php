@@ -1,8 +1,8 @@
 <?php
-require_once 'config/default.php';
-require_once 'auth.php';
-require_once 'lib/lib_liga.php';
-require_once 'lib/lib_comment.php';
+require_once dirname(__FILE__). '/config/default.php';
+require_once dirname(__FILE__). '/auth.php';
+require_once dirname(__FILE__). '/lib/lib_liga.php';
+require_once dirname(__FILE__). '/lib/lib_comment.php';
 
 $comment = getComments()
 ?>
@@ -11,7 +11,7 @@ $comment = getComments()
 
 <head>
   <?php
-  include 'layout/header.html';
+  include dirname(__FILE__). '/layout/header.html';
   ?>
 
   <title>Liga Kommentar</title>
@@ -20,7 +20,7 @@ $comment = getComments()
 
 <body>
   <!-- NAVIGATION -->
-  <?php include "navigation.php"; ?>
+  <?php include dirname(__FILE__). "/navigation.php"; ?>
 
 
 
@@ -60,7 +60,7 @@ $comment = getComments()
       </div>
     </div>
     <footer>
-      <?php include 'layout/footer.html';      ?>
+      <?php include dirname(__FILE__). '/layout/footer.html';      ?>
     </footer>
 </body>
 

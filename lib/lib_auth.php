@@ -1,6 +1,6 @@
 
 <?php 
-require_once 'lib/lib_liga.php';
+require_once dirname(__FILE__) .'/lib_liga.php';
 
 // prüft ob für den user ein token hinterlegt ist und dieser übereinstimmt
 function checktoken(){
@@ -43,7 +43,7 @@ function checktoken(){
 function liga_login($login, $pwd) {
     $msql=  db_connect();
     
-    $maxSaisonID=max_saison(); //Definiert in lib/lib_liga
+    $maxSaisonID=max_saison(); //Definiert in lib_liga
     
     $qryLogin="SELECT pwdhash, user_id , TeamID, userGroup ,token from account WHERE email=?";
     $stmnt=$msql->prepare($qryLogin);

@@ -1,13 +1,13 @@
 <?php
-    require_once '../config/default.php';
-    require_once '../lib/lib_auth.php';
-    require_once '../lib/lib_user.php';
-    require_once "lib/lib_init_db.php";
+    require_once dirname(__FILE__). '/../config/default.php';
+    require_once dirname(__FILE__). '/../lib/lib_auth.php';
+    require_once dirname(__FILE__). '/../lib/lib_user.php';
+    require_once dirname(__FILE__). '/../lib/lib_init_db.php';
 ?>
 <!doctype html>
 <html>
     <head>
-    <?php    include '../layout/header.html';    ?>
+    <?php    include dirname(__FILE__). '/../layout/header.html';    ?>
         <title>Liga Setup - Init Database</title>
     </head>
     <body>
@@ -112,7 +112,7 @@
         ?>
 
         <footer>
-        <?php      include '../layout/footer.html';      ?>
+        <?php      include dirname(__FILE__). '/../layout/footer.html';      ?>
         </footer>
         </div> 
     </body>

@@ -1,6 +1,6 @@
 <?php 
-    require_once 'config/default.php'; // Liga-Standard immer einbinden !!
-    require_once 'lib/lib_auth.php'; // enthält PHP Liga-Login-Funktion
+    require_once dirname(__FILE__). '/config/default.php'; // Liga-Standard immer einbinden !!
+    require_once dirname(__FILE__). '/lib/lib_auth.php'; // enthält PHP Liga-Login-Funktion
 
     liga_logout();
 ?>
@@ -8,7 +8,7 @@
 <!doctype html>
 <html>
 <head>
-<?php    include 'layout/header.html';    ?>
+<?php    include dirname(__FILE__). '/layout/header.html';    ?>
 
     <title>Liga Abmeldung</title>
 </head>

@@ -1,6 +1,6 @@
 <?php
 
-require_once '../lib/lib_liga.php';
+require_once dirname(__FILE__) .'/lib_liga.php';
 // lädt alle saisons
 function getSeasons()
 {

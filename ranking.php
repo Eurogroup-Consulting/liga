@@ -1,8 +1,8 @@
 <?php
-    require_once 'config/default.php';
-    require_once 'auth.php';
-    require_once 'lib/lib_liga.php';
-    require_once 'lib/lib_ranking.php';
+    require_once dirname(__FILE__). '/config/default.php';
+    require_once dirname(__FILE__). '/auth.php';
+    require_once dirname(__FILE__). '/lib/lib_liga.php';
+    require_once dirname(__FILE__). '/lib/lib_ranking.php';
     
     if (isset($_SESSION['userLiga'])){
         $ligaid=$_SESSION['userLiga'];
@@ -19,13 +19,13 @@
 <!doctype html>
 <html>
 <head>
-    <?php    include 'layout/header.html';    ?>
+    <?php    include dirname(__FILE__). '/layout/header.html';    ?>
     
     <title>Liga Ranking <?php echo(date("H:m:s")) ?></title>
 </head>
 
 <!-- NAVIGATION -->
-<?php include "navigation.php"; ?>
+<?php include dirname(__FILE__). "/navigation.php"; ?>
 
 <body>
 
@@ -64,7 +64,7 @@
           
     </div><!-- /content -->
 <footer>
-    <?php include 'layout/footer.html';      ?>
+    <?php include dirname(__FILE__). '/layout/footer.html';      ?>
     <script language="javascript">
     $('#ligaselector').on('change', function(e){
         

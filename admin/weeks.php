@@ -1,11 +1,11 @@
 <?php
-require_once '../config/default.php'; // Enthält Session Funktionen und StandardFarben
-require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
+require_once dirname(__FILE__) .'/../config/default.php'; // Enthält Session Funktionen und StandardFarben
+require_once dirname(__FILE__) .'/../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
 // für nicht admins ist der Zugang nicht gestattet
 if (!isAdmin()) {
     die();
 }
-require_once '../lib/lib_weeks.php';
+require_once dirname(__FILE__) .'/../lib/lib_weeks.php';
 $success = false;
 
 
@@ -14,7 +14,7 @@ if (isset($_POST["action"]) && isset($_POST["week"])  && $_POST["action"] == "Sp
 }
 
 if (isset($_POST["deleteMak"])) {
-    require_once '../lib/lib_maks.php';
+    require_once dirname(__FILE__) .'/../lib/lib_maks.php';
     $makSuccess = deleteMaksByWeek($_POST["deleteMak"]);
 }
 if (isset($_POST["deleteData"])) {
@@ -31,7 +31,7 @@ if (isset($_GET["season"])) {
 
 <head>
     <?php
-    include '../layout/header.html';
+    include dirname(__FILE__). '/../layout/header.html';
     ?>
 
     <title>Liga Administration - Wochen bearbeiten</title>
@@ -39,7 +39,7 @@ if (isset($_GET["season"])) {
 
 <body>
     <!-- NAVIGATION -->
-    <?php include "../navigation.php"; ?>
+    <?php include dirname(__FILE__). "/../navigation.php"; ?>
 
 
     <!-- CONTENT -->
@@ -150,7 +150,7 @@ if (isset($_GET["season"])) {
 </body>
 <footer>
     <?php
-    include '../layout/footer.html';
+    include dirname(__FILE__). '/../layout/footer.html';
     ?>
 
     <?php if (isset($teamsDivision) && isset($teams)) : ?>

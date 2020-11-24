@@ -1,18 +1,18 @@
 <?php
-    require_once 'config/default.php';
-    require_once 'auth.php';
-    require_once 'lib/lib_liga.php';  
-    include 'lib/lib_ranking.php';
+    require_once dirname(__FILE__). '/config/default.php';
+    require_once dirname(__FILE__). '/auth.php';
+    require_once dirname(__FILE__). '/lib/lib_liga.php';  
+    include dirname(__FILE__). '/lib/lib_ranking.php';
 ?>
 <!doctype html>
 <html>
 <head>
-    <?php    include 'layout/header.html';    ?>
+    <?php    include dirname(__FILE__). '/layout/header.html';    ?>
     <title>Liga Home</title>
 </head>
 <body>
   <!-- NAVIGATION -->
-  <?php include "navigation.php"; ?>
+  <?php include dirname(__FILE__). "/navigation.php"; ?>
 
   <!-- CONTENT --> 
     <div class="container">
@@ -168,7 +168,7 @@
 <?php endif ?>
 </div>
   <footer>
-    <?php      include 'layout/footer.html';      ?>
+    <?php      include dirname(__FILE__). '/layout/footer.html';      ?>
   </footer>
 
 

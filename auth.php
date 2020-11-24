@@ -1,5 +1,5 @@
 <?php
-   require_once 'lib/lib_auth.php';
+   require_once dirname(__FILE__). '/lib/lib_auth.php';
 
     // IF you want to use the Liga system  in a subfolder please add the base path  into the baseURL below
     // e.g.            $baseURL = "/Liga";
