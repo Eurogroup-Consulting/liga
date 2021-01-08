@@ -60,7 +60,7 @@ function updateLeagues($leagues)
         $stmnt = $dbCon->prepare($qryusers);
         $stmnt->bind_param('sisi', $league["LigaName"], $league["AktSaisonID"], $league["Kommentar"], $league["ID"]);
         $stmnt->execute();
-        if ($stmnt->affected_rows !== 1 && $error === false) {
+        if (!$stmnt && $error === false) {
             $error = true;
         }
     }

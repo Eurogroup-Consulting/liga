@@ -57,6 +57,7 @@ if (isset($_POST["action"]) && isset($_POST["allocations"]) && $_POST["action"] 
                                     $groupOptions .= '<option value="' . $group . '"  > ' . $group . ' </option>';
                                 }
                                 // Erlaubt das Bearbeiten der bestehenden Zuordnungen
+                                $key = 0;
                                 foreach (getAllocations() as $key => $allocation) {
                                 ?>
 

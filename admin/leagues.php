@@ -7,10 +7,10 @@ if (!isAdmin()) {
 }
 require_once dirname(__FILE__) .'/../lib/lib_leagues.php';
 require_once dirname(__FILE__) .'/../lib/lib_seasons.php';
-$success = false;
+$error = false;
 
 if (isset($_POST["action"]) && isset($_POST["league"]) && $_POST["action"] == "Speichern") {
-    $success = updateLeagues($_POST["league"]);
+    $error = updateLeagues($_POST["league"]);
 }
 ?>
 <!doctype html>
@@ -50,7 +50,7 @@ if (isset($_POST["action"]) && isset($_POST["league"]) && $_POST["action"] == "S
                                 <?php
                                 $seasons = getSeasons();
 
-
+                                $key = 0;
                                 foreach (getLeagues() as $key => $league) {
                                 ?>
 
@@ -112,10 +112,10 @@ if (isset($_POST["action"]) && isset($_POST["league"]) && $_POST["action"] == "S
                         </div>
                         <button class="btn btn-lg btn-primary btn-block" name="action" type="submit" value="Speichern">Speichern</button>
                         <?php
-                        if ($success === true) {
+                        if ($error === false && isset($_POST["action"])) {
                             echo ('<p class="alert-success">Alle Ligen wurden erfolgreich aktualisiert</p>');
                         } else if (isset($_POST["action"])) {
-                            echo ('<p class="alert alert-danger">' . $success . '</p>');
+                            echo ('<p class="alert alert-danger">' . $error . '</p>');
                         }
                         ?>
                     </form>

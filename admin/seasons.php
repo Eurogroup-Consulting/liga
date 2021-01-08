@@ -47,6 +47,7 @@ if (isset($_POST["action"]) && isset($_POST["season"]) && $_POST["action"] == "S
 
                                 <?php
                                 $seasons = getSeasons();
+                                $key = 0;
                                 foreach ($seasons as $key => $season) {
                                 ?>
                                     <tr>

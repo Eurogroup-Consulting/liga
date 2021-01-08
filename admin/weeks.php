@@ -44,14 +44,14 @@ if (isset($_GET["season"])) {
 
     <!-- CONTENT -->
     <div class="container">
-        <?php if (!isset($weeks)) : ?>
+        <?php if (!isset($weeks) || count($weeks)== 0 ) : ?>
             <div class="card mt-3 ">
                 <div class="card-header font-weight-bolder">
                     Keine Wochen gefunden
                 </div>
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
-                        <p> Leider wurde keine passenden Wochen gefunden</p>
+                        <p> Leider wurden keine passenden Wochen gefunden</p>
                     </blockquote>
                 </div>
             </div>
@@ -75,6 +75,7 @@ if (isset($_GET["season"])) {
                                             </tr>
                                             <!-- zeigt eine zusätzliche Zeile an um neue Teams hinzufügen zu können.-->
                                             <?php
+                                            $key = 0;
                                             foreach ($weeks as $key => $week) {
                                             ?>
                                                 <tr>

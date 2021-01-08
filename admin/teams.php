@@ -43,6 +43,7 @@ if (isset($_POST["action"]) && isset($_POST["teams"]) && $_POST["action"] == "Sp
                                 </tr>
 
                                 <?php
+                                $key = 0;
                                 foreach (getTeams() as $key => $team) {
                                 ?>
 
