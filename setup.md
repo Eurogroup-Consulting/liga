@@ -69,5 +69,5 @@ Hierzu passen Sie bitte die folgenden Felder an:</br>
 
 Starten Sie nun Ihren Webserver und rufen sie die Seite `/setup/init_db.php` in dem von Ihnen festgelegten Webpfad auf.</br>
 Sie werden nun nach einer Administratoren Email Addresse und einem Passwort gefragt. 
-Wenn Sie diese eingegeben haben können Sie entscheiden, ob das Liga System mit Demo Daten gefüllt werden soll. Hierzu wählen Sie die Option `Demo-Daten mit erstellen?` aus. (Diese Option ist empfehlenswert, um eine Testumgebung aufzusetzen und sich zunächst zu orientieren. Für eine aktive Umgebung ist diese Option <b>NICHT</b> zu empfehlen.)
+Wenn Sie diese eingegeben haben können Sie entscheiden, ob das Liga System mit Demo Daten gefüllt werden soll. Hierzu wählen Sie die Option `Demo-Daten mit erstellen?` aus. (Diese Option ist empfehlenswert, um eine Testumgebung aufzusetzen und sich zunächst zu orientieren. Für eine aktive Umgebung ist diese Option __NICHT__ zu empfehlen.)
 Schließen Sie den Vorgang anschließend mit einem Klick auf `Datenbank anlegen?` ab. Die benötigten Datenbank Einträge werden hierdurch durchgeführt und Sie können sich anschließend mit den vergebenen Administrator Zugangsdaten in das Liga System einloggen.
