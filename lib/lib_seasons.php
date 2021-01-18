@@ -1,7 +1,7 @@
 <?php
 
-require_once '../liga_db_functions.php';
-
+require_once dirname(__FILE__) .'/lib_liga.php';
+// lädt alle saisons
 function getSeasons()
 {
     $dbCon = db_connect();
@@ -13,10 +13,12 @@ function getSeasons()
     return $seasons;
 }
 
+// Erstellt/aktualisiert/löscht alle Saisons
 function updateSeasons($seasons)
 {
     $error = true;
     foreach ($seasons as $season) {
+        // zu löschende Saisons werden gesondert verarbeitet 
         if (isset($season['delete']) &&  $season['delete'] === "1") {
             $success = deleteSeason($season);
             if (!$success && $error === true) {
@@ -30,7 +32,7 @@ function updateSeasons($seasons)
             }
             continue;
         }
-
+        // zu erstellende Saisons werden gesondert verarbeitet 
         if (isset($season['add']) &&  $season['add'] == true) {
             $success = createSeason($season);
             if (!$success && $error === true) {
@@ -53,6 +55,7 @@ function updateSeasons($seasons)
     return $error;
 }
 
+// löscht die gewählte saison und die dazugehörigen spielwochen
 function deleteSeason($season)
 {
     if (checkUsage($season) != 0) {
@@ -75,6 +78,8 @@ function deleteSeason($season)
     }
     return true;
 }
+
+// prüft ob die saison genutzt wird
 function checkUsage($season)
 {
     $dbCon = db_connect();
@@ -86,7 +91,7 @@ function checkUsage($season)
     $count = $res->fetch_assoc();
     return $count["isUsed"];
 }
-
+// erstellt eine neue saison
 function createSeason($season)
 {
     $start = date("Y-m-d", strtotime($season["SaisonBegin"]));
@@ -104,23 +109,34 @@ function createSeason($season)
     }
 }
 
+
+// erstellt alle spielwochen für eine saison
 function createWeeks($season, $id)
 {
     $success = true;
-    $startWeek = date("W", strtotime($season["SaisonBegin"]));
-    $year = date("Y", strtotime($season["SaisonBegin"]));
-    $endWeek = date("W", strtotime($season["SaisonEnde"]));
-    for ($i = $startWeek; $i <= $endWeek; $i++) {
-        $day = (new DateTime())->setISODate($year, $i, 7)->format('Y-m-d');
-        $week = 'KW ' . ($i < 10 && substr($i, 0, 1) != 0 ? '0' . $i : $i);
+    $startTime = strtotime($season["SaisonBegin"]); 
+    $endTime = strtotime($season["SaisonEnde"]); 
+
+    // stellt sicher, dass auch die letzte woche mit angelegt wird
+    $endTimeSunday =  DateTime::createFromFormat('U', $endTime);
+    $endTimeSundayUnix = $endTimeSunday->setISODate((int)$endTimeSunday->format('o'), (int)$endTimeSunday->format('W'), 7)->format('U');
+
+    while ($startTime <= $endTimeSundayUnix) {
+        // um auch Jahresübergreifend zu funktionieren wird das Datetime format genutzt
+        $datetime =  DateTime::createFromFormat('U', $startTime);
+        $datetime->setISODate((int)$datetime->format('o'), (int)$datetime->format('W'), 7);
+        
+        $kw = 'KW ' .$datetime->format('W');
+        $day= $datetime->format('Y-m-d');
         $dbCon = db_connect();
         $qryweek = "INSERT INTO spielwochen( SaisonId, SpielwochenNr, Stichtag) VALUES (?,?,?)";
         $stmnt = $dbCon->prepare($qryweek);
-        $stmnt->bind_param('sss', $id, $week, $day);
+        $stmnt->bind_param('sss', $id, $kw, $day);
         $stmnt->execute();
         if (!$stmnt) {
             $success = false;
         }
-    }
+        $startTime += strtotime('+1 week', 0); 
+    } 
     return $success;
 }

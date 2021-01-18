@@ -1,13 +1,13 @@
 <?php
-require_once 'config.php'; // Liga-Standard immer einbinden !!
-require_once 'auth_db_functions.php'; // enthält PHP Liga-register-Funktion
+require_once dirname(__FILE__). '/config/default.php'; // Liga-Standard immer einbinden !!
+require_once dirname(__FILE__). '/lib/lib_auth.php'; // enthält PHP Liga-register-Funktion
 ?>
 
 <!doctype html>
 <html>
 
 <head>
-<?php    include 'layout/header.html';    ?>
+<?php    include dirname(__FILE__). '/layout/header.html';    ?>
 
     <title>Liga Registrierung</title>
 </head>
@@ -27,11 +27,11 @@ if (isset($_POST['registername'])) {
 ?>
 
 <!-- Custom styles for this template -->
-<link href="./css/liga_signin.css" rel="stylesheet">
+<link href="./assets/css/liga_signin.css" rel="stylesheet">
 
 <body class="text-center">
     <form class="form-signin" action="./registerform.php" method="POST">
-        <img class="mb-4" src="./images/LigaLogo60r.png" alt="" width="60" height="60">
+        <img class="mb-4" src="./assets/images/LigaLogo60r.png" alt="" width="60" height="60">
         <h1 class="h3 mb-3 font-weight-normal">Liga-Registrierung</h1>
         <label class="sr-only">E-Mail:</label>
         <input class="form-control" name="registername" type="email" placeholder="Email-Addresse" value="<?php echo $email ?>" required autofocus>

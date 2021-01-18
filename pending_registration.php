@@ -1,18 +1,18 @@
 <?php
-require_once 'config.php';
-require_once 'auth.php';
+require_once dirname(__FILE__). '/config/default.php';
+require_once dirname(__FILE__). '/auth.php';
 ?>
 <!doctype html>
 <html>
 
 <head>
-    <?php include 'layout/header.html';    ?>
+    <?php include dirname(__FILE__). '/layout/header.html';    ?>
     <title>Liga Home</title>
 </head>
 
 <body>
 
-    <?php include "navigation.php"; ?>
+    <?php include dirname(__FILE__). "/navigation.php"; ?>
 
     <div class="container">
         <div class="card mt-3 ">
@@ -29,7 +29,7 @@ require_once 'auth.php';
         </div>
     </div>
     <footer>
-        <?php include 'layout/footer.html';      ?>
+        <?php include dirname(__FILE__). '/layout/footer.html';      ?>
     </footer>
 </body>
 

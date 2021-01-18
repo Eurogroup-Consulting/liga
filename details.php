@@ -1,8 +1,8 @@
 <?php
-    require_once 'config.php';
-    require_once 'auth.php';
-    require_once 'liga_db_functions.php';
-    require_once 'details_db_functions.php';
+    require_once dirname(__FILE__). '/config/default.php';
+    require_once dirname(__FILE__). '/auth.php';
+    require_once dirname(__FILE__). '/lib/lib_liga.php';
+    require_once dirname(__FILE__). '/lib/lib_details.php';
 
     
     if (isset($_GET['teamid'])){
@@ -29,9 +29,10 @@
 <!doctype html>
 <html>
 <head>
-<?php    include 'layout/header.html';    ?>
+<?php    include dirname(__FILE__). '/layout/header.html';    ?>
     <title>Team Details</title>
     <script type="text/javascript">
+    // ändert die url beim umschalten zwischen kumuliert und nicht kumuliert
         function changeURL(field){
                 value = field.checked?1:0
                 url = location.href
@@ -47,7 +48,7 @@
 
 <body>
   <!-- NAVIGATION -->
-  <?php include "navigation.php"; ?>
+  <?php include dirname(__FILE__). "/navigation.php"; ?>
     <div class="container">
         <ul class="list-group">
             <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
@@ -94,6 +95,6 @@
 
 </body>
 <footer>
-      <?php      include 'layout/footer.html';      ?>
+      <?php      include dirname(__FILE__). '/layout/footer.html';      ?>
   </footer>
 </html>

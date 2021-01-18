@@ -1,13 +1,13 @@
 <?php
-require_once '../config.php';
-require_once '../auth.php';
+require_once dirname(__FILE__) .'/../config/default.php'; // Enthält Session Funktionen und StandardFarben
+require_once dirname(__FILE__) .'/../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
 if (!isAdmin()) {
     die();
 }
-require_once 'leagues_db_functions.php';
-require_once 'seasons_db_functions.php';
-require_once 'teams_db_functions.php';
-require_once 'team_division_db_functions.php';
+require_once dirname(__FILE__) .'/../lib/lib_leagues.php';
+require_once dirname(__FILE__) .'/../lib/lib_seasons.php';
+require_once dirname(__FILE__) .'/../lib/lib_teams.php';
+require_once dirname(__FILE__) .'/../lib/lib_team_division.php';
 $success = false;
 
 
@@ -24,7 +24,7 @@ if (isset($_POST["action"]) && isset($_POST["AktSaisonID"]) && isset($_POST["tea
 
 <head>
     <?php
-    include '../layout/header.html';
+    include dirname(__FILE__). '/../layout/header.html';
     ?>
 
     <title>Liga Administration - Liga bearbeiten</title>
@@ -32,7 +32,7 @@ if (isset($_POST["action"]) && isset($_POST["AktSaisonID"]) && isset($_POST["tea
 
 <body>
     <!-- NAVIGATION -->
-    <?php include "../navigation.php"; ?>
+    <?php include dirname(__FILE__). "/../navigation.php"; ?>
 
 
     <!-- CONTENT -->
@@ -116,7 +116,7 @@ if (isset($_POST["action"]) && isset($_POST["AktSaisonID"]) && isset($_POST["tea
 </body>
 <footer>
     <?php
-    include '../layout/footer.html';
+    include dirname(__FILE__). '/../layout/footer.html';
     ?>
 
     <?php if (isset($teamsDivision) && isset($teams)) : ?>

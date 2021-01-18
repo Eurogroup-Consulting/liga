@@ -1,10 +1,11 @@
 <?php
-require_once '../config.php';
-require_once '../auth.php';
+require_once dirname(__FILE__) .'/../config/default.php'; // Enthält Session Funktionen und StandardFarben
+require_once dirname(__FILE__) .'/../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
+// für nicht admins ist der Zugang nicht gestattet
 if (!isAdmin()) {
     die();
 }
-require_once 'weeks_db_functions.php';
+require_once dirname(__FILE__) .'/../lib/lib_weeks.php';
 $success = false;
 
 
@@ -13,7 +14,7 @@ if (isset($_POST["action"]) && isset($_POST["week"])  && $_POST["action"] == "Sp
 }
 
 if (isset($_POST["deleteMak"])) {
-    require_once 'maks_db_functions.php';
+    require_once dirname(__FILE__) .'/../lib/lib_maks.php';
     $makSuccess = deleteMaksByWeek($_POST["deleteMak"]);
 }
 if (isset($_POST["deleteData"])) {
@@ -30,7 +31,7 @@ if (isset($_GET["season"])) {
 
 <head>
     <?php
-    include '../layout/header.html';
+    include dirname(__FILE__). '/../layout/header.html';
     ?>
 
     <title>Liga Administration - Wochen bearbeiten</title>
@@ -38,19 +39,19 @@ if (isset($_GET["season"])) {
 
 <body>
     <!-- NAVIGATION -->
-    <?php include "../navigation.php"; ?>
+    <?php include dirname(__FILE__). "/../navigation.php"; ?>
 
 
     <!-- CONTENT -->
     <div class="container">
-        <?php if (!isset($weeks)) : ?>
+        <?php if (!isset($weeks) || count($weeks)== 0 ) : ?>
             <div class="card mt-3 ">
                 <div class="card-header font-weight-bolder">
                     Keine Wochen gefunden
                 </div>
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
-                        <p> Leider wurde keine passenden Wochen gefunden</p>
+                        <p> Leider wurden keine passenden Wochen gefunden</p>
                     </blockquote>
                 </div>
             </div>
@@ -74,6 +75,7 @@ if (isset($_GET["season"])) {
                                             </tr>
                                             <!-- zeigt eine zusätzliche Zeile an um neue Teams hinzufügen zu können.-->
                                             <?php
+                                            $key = 0;
                                             foreach ($weeks as $key => $week) {
                                             ?>
                                                 <tr>
@@ -149,7 +151,7 @@ if (isset($_GET["season"])) {
 </body>
 <footer>
     <?php
-    include '../layout/footer.html';
+    include dirname(__FILE__). '/../layout/footer.html';
     ?>
 
     <?php if (isset($teamsDivision) && isset($teams)) : ?>

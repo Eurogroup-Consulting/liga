@@ -1,6 +1,6 @@
 <?php
 
-require_once '../liga_db_functions.php'; //enthält Funktionen zur Datenbankverbindung
+require_once dirname(__FILE__) .'/lib_liga.php'; //enthält Funktionen zur Datenbankverbindung
 
 // Wird genutzt um MAKs mit den entsprechenden Teamnamen anzuzeigen
 function getMAKsWithTeamName()
@@ -70,10 +70,11 @@ function updateMAKs($weekID, $maks, $seasonID)
     return !$error;
 }
 
+// Fügt für alle folgenden Spielwochen innerhalb der Saison das Team mit der eingetragenen MAK ein.
+// Falls der Eintrag bereits existiert, wird er geupdatet
 function UpdateAndAdoptMAK($weekID, $mak, $seasonID)
 {
-    // Fügt ür alle folgenden Spielwochen innerhalb der Saison das Team mit der eingetragenen MAK ein.
-    // Falls der Eintrag bereits existiert, wird er geupdatet
+
     $dbCon = db_connect();
     $qryMaks = "INSERT INTO `mak` (SpielWochenID, TeamID, MAK) SELECT DISTINCT s.ID, ?, ? FROM `spielwochen` as s where s.SaisonID=? AND s.ID>=? ON DUPLICATE KEY UPDATE MAK=?";
     $stmnt = $dbCon->prepare($qryMaks);

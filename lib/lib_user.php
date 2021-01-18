@@ -1,7 +1,7 @@
 <?php
 
-require_once '../liga_db_functions.php';
-
+require_once dirname(__FILE__) .'/lib_liga.php';
+// lädt alle accounts
 function getUsers()
 {
     $dbCon = db_connect();
@@ -13,10 +13,12 @@ function getUsers()
     return $users;
 }
 
+// aktualisiert/löscht accounts
 function updateUsers($users)
 {
     $error = false;
     foreach ($users as $user) {
+        // zu löschende accounts werden gesondert verarbeitet
         if (isset($user['delete']) &&  $user['delete'] === "1") {
             $success = deleteUser($user);
             if (!$success && $error === false) {
@@ -36,6 +38,7 @@ function updateUsers($users)
     return $error;
 }
 
+// löscht den gewählten account
 function deleteUser($user)
 {
     $error = false;

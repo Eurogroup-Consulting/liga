@@ -1,14 +1,14 @@
 <?php
-    require_once 'config.php';
-    require_once 'auth.php';
-    require_once 'liga_db_functions.php';  
-    include 'ranking_db_functions.php';
+    require_once dirname(__FILE__). '/config/default.php';
+    require_once dirname(__FILE__). '/auth.php';
+    require_once dirname(__FILE__). '/lib/lib_liga.php';  
+    include dirname(__FILE__). '/lib/lib_ranking.php';
 ?>
 <!doctype html>
 <html>
 <head>
-<?php    include 'layout/header.html';    ?>
-    <link href="css/landscape.css" rel="stylesheet">
+<?php    include dirname(__FILE__). '/layout/header.html';    ?>
+    <link href="assets/css/landscape.css" rel="stylesheet">
 
 
 
@@ -22,7 +22,7 @@
 ?>
 <body>
   <!-- NAVIGATION -->
-  <?php include "navigation.php"; ?>
+  <?php include dirname(__FILE__). "/navigation.php"; ?>
 
 
 
@@ -115,6 +115,6 @@
 </script>
 </body>
 <footer>
-      <?php      include 'layout/footer.html';      ?>
+      <?php      include dirname(__FILE__). '/layout/footer.html';      ?>
   </footer>
 </html>

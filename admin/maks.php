@@ -1,12 +1,13 @@
 <?php
-require_once '../config.php'; // Enthält Session Funktionen und StandardFarben
-require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
+require_once dirname(__FILE__) .'/../config/default.php'; // Enthält Session Funktionen und StandardFarben
+require_once dirname(__FILE__) .'/../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
+// für nicht admins ist der Zugang nicht gestattet
 if (!isAdmin()) {
     die();
 }
-require_once 'seasons_db_functions.php'; // Enthält Saison-Datenbank-Funktionen 
-require_once 'team_division_db_functions.php'; // Enthält Teameinteilungs-Datenbank-Funktionen
-require_once 'maks_db_functions.php'; // Enthält MAK-Datenbank-Funktionen
+require_once dirname(__FILE__) .'/../lib/lib_seasons.php'; // Enthält Saison-Datenbank-Funktionen 
+require_once dirname(__FILE__) .'/../lib/lib_team_division.php'; // Enthält Teameinteilungs-Datenbank-Funktionen
+require_once dirname(__FILE__) .'/../lib/lib_maks.php'; // Enthält MAK-Datenbank-Funktionen
 $success = false;
 
 // Diese Funktion wird nur nach dem Absenden der Formulardaten aufgerufen 
@@ -24,7 +25,7 @@ $maks = getMAKsWithTeamName();
 
 <head>
     <?php
-    include '../layout/header.html';
+    include dirname(__FILE__). '/../layout/header.html';
     ?>
 
     <title>Liga Administration - MAK</title>
@@ -32,7 +33,7 @@ $maks = getMAKsWithTeamName();
 
 <body>
     <!-- NAVIGATION -->
-    <?php include "../navigation.php"; ?>
+    <?php include dirname(__FILE__). "/../navigation.php"; ?>
 
 
     <!-- CONTENT -->
@@ -98,7 +99,7 @@ $maks = getMAKsWithTeamName();
 </body>
 <footer>
     <?php
-    include '../layout/footer.html';
+    include dirname(__FILE__). '/../layout/footer.html';
     ?>
 
     <?php if (isset($weeks) && isset($maks)) : ?>

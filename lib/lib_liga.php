@@ -1,12 +1,15 @@
 <?php
-    require_once 'setup/liga_config.php';
 
+
+    require_once dirname(__FILE__) .'/../config/db_config.php';
+
+    // erstellt eine verbindung zur datenbank
     function db_connect(){
           
         $db_socket=null;
         $db_port=null;
          
-        //Definiert duinrch setup/liga_config.php 
+        //Definiert duinrch ../config/db_config.php 
         $mSqlObj=new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, $db_port, $db_socket);
         
         // Lokale Variablen
@@ -24,7 +27,7 @@
     }
 
 
-
+    // lädt die liga id der übergebenen saison und des übergebenen teams
     function getUserLiga($SaisonID,$TeamID){
       $conL=db_connect();
       $sqlLiga = "SELECT LigaID FROM `teameinteilung` WHERE SaisonID=? AND TeamID=?";
@@ -42,6 +45,7 @@
         return 0;
     }
 
+    // lädt die späteste saison
     function max_saison(){
       $conSaison=db_connect();
       $sqlMaxSasison = "SELECT ID FROM `saisons` WHERE SaisonBegin = (SELECT MAX(SaisonBegin) FROM saisons)";
@@ -54,6 +58,7 @@
       return $SaisionID;
     }
 
+    // lädt den aktuellsten kommentar
     function akt_comment(){
       $conC=db_connect();
       $sqlAktCom = "SELECT Teaser FROM `kommentare` WHERE Datum<=NOW() ORDER BY Datum DESC LIMIT 1";

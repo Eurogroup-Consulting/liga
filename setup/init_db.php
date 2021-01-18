@@ -1,19 +1,21 @@
 <?php
-    require_once '../config.php';
-    require_once '../auth_db_functions.php';
-    require_once '../admin/user_db_functions.php';
+    require_once dirname(__FILE__). '/../config/default.php';
+    require_once dirname(__FILE__). '/../lib/lib_auth.php';
+    require_once dirname(__FILE__). '/../lib/lib_user.php';
+    require_once dirname(__FILE__). '/../lib/lib_init_db.php';
 ?>
 <!doctype html>
 <html>
     <head>
-    <?php    include '../layout/header.html';    ?>
+    <?php    include dirname(__FILE__). '/../layout/header.html';    ?>
         <title>Liga Setup - Init Database</title>
     </head>
     <body>
         <div class="container">
         <?php 
-            require_once "init_db_functions.php";
+            // setzt die Datenbank auf UTF8
             setUTF8();
+            // prüft ob bereits taelen zum liga system existieren
             if (tablesExist()): 
             ?> 
             <div class='card mt-3 '>
@@ -60,6 +62,7 @@
                         Initializing Database
                     </div>
             <?php
+                // ertsellt die leere datenbankstruktur
                 $result_db=run_sql_file("liga_db_empty.sql");
 
                 // Card Footer für Init DB grün oder rot
@@ -73,7 +76,9 @@
                 echo "</div>"; // Card Footer ende
                 echo "</div>"; // Card Ende
                 
+                // ertellt einen account mit den angegebenen nutzerdaten
                 liga_register($_POST['mail'], $_POST['password']);
+                // weißt dem erstellten account die administrator rechte zu
                 $user = [["userGroup"=> "Admin", "userId" => 1, "TeamID" => 0]];
                 updateUsers($user);
 
@@ -86,6 +91,7 @@
                     echo "    Filling Database"; //Card Header Content
                     echo "  </div>"; // Card Header Ende
 
+                    // fügt demodaten in die datenbank ein
                     $result_data= run_sql_file("liga_demo_data.sql");
 
                     // Card Footer für Filling DB grün oder rot
@@ -106,7 +112,7 @@
         ?>
 
         <footer>
-        <?php      include '../layout/footer.html';      ?>
+        <?php      include dirname(__FILE__). '/../layout/footer.html';      ?>
         </footer>
         </div> 
     </body>

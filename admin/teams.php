@@ -1,10 +1,11 @@
 <?php
-require_once '../config.php';
-require_once '../auth.php';
+require_once dirname(__FILE__) .'/../config/default.php'; // Enthält Session Funktionen und StandardFarben
+require_once dirname(__FILE__) .'/../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
+// für nicht admins ist der Zugang nicht gestattet
 if (!isAdmin()) {
     die();
 }
-require_once 'teams_db_functions.php';
+require_once dirname(__FILE__) .'/../lib/lib_teams.php';
 $success = false;
 if (isset($_POST["action"]) && isset($_POST["teams"]) && $_POST["action"] == "Speichern") {
     $success = updateTeams($_POST["teams"]);
@@ -15,15 +16,15 @@ if (isset($_POST["action"]) && isset($_POST["teams"]) && $_POST["action"] == "Sp
 
 <head>
     <?php
-    include '../layout/header.html';
+    include dirname(__FILE__). '/../layout/header.html';
     ?>
 
-    <title>Liga Administration - User</title>
+    <title>Liga Administration - Teams</title>
 </head>
 
 <body>
     <!-- NAVIGATION -->
-    <?php include "../navigation.php"; ?>
+    <?php include dirname(__FILE__). "/../navigation.php"; ?>
 
     <!-- CONTENT -->
     <div class="container">
@@ -42,6 +43,7 @@ if (isset($_POST["action"]) && isset($_POST["teams"]) && $_POST["action"] == "Sp
                                 </tr>
 
                                 <?php
+                                $key = 0;
                                 foreach (getTeams() as $key => $team) {
                                 ?>
 
@@ -86,7 +88,7 @@ if (isset($_POST["action"]) && isset($_POST["teams"]) && $_POST["action"] == "Sp
 </body>
 <footer>
     <?php
-    include '../layout/footer.html';
+    include dirname(__FILE__). '/../layout/footer.html';
     ?>
 
 </footer>

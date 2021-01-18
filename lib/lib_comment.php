@@ -1,5 +1,6 @@
 <?php
-require_once 'liga_db_functions.php';
+require_once dirname(__FILE__) .'/lib_liga.php';
+// lädt den aktuellsten kommentar 
 function getComments(){
     $dbCon = db_connect();
     $qryComment = "SELECT * FROM kommentare WHERE  Datum<=NOW() ORDER BY Datum DESC LIMIT 1";

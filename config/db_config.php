@@ -1,5 +1,5 @@
 <?php
-/** Basiskonfiguration Liga *******************
+/** Basiskonfiguration der Liga Datenbank *******************
 *
 *   MySQL settings, Table-Prefix, Domain
 * 
@@ -13,7 +13,5 @@ define('DB_HOST', 'YOUR_HOSTNAME'); // MySQL hostname
 define('DB_CHARSET', 'utf8'); // Database Charset to use in creating database tables. 
 define('DB_COLLATE', '');// The Database Collate type. Don't change this if in doubt.
 
-/**  Tabellen-Präfix noch nicht in Verwendung */
-define('TABLE_PREFIX',"");
 
 /** END **/

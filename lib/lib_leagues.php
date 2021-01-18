@@ -1,7 +1,7 @@
 <?php
 
-require_once '../liga_db_functions.php';
-
+require_once dirname(__FILE__) .'/lib_liga.php';
+// lädt alle ligen
 function getLeagues()
 {
     $dbCon = db_connect();
@@ -25,7 +25,7 @@ function getLeague($leagueID)
     $league = $res->fetch_assoc();
     return $league;
 }
-
+// erstellt/löscht/Aktualisiert die Ligen
 function updateLeagues($leagues)
 {
     $error = false;
@@ -60,13 +60,14 @@ function updateLeagues($leagues)
         $stmnt = $dbCon->prepare($qryusers);
         $stmnt->bind_param('sisi', $league["LigaName"], $league["AktSaisonID"], $league["Kommentar"], $league["ID"]);
         $stmnt->execute();
-        if ($stmnt->affected_rows !== 1 && $error === false) {
+        if (!$stmnt && $error === false) {
             $error = true;
         }
     }
     return $error;
 }
 
+// löscht die übergebene Liga
 function deleteLeague($league)
 {
     // überprüft, ob die Liga aktuell in nutzung ist
@@ -86,7 +87,7 @@ function deleteLeague($league)
     return !$error;
 }
 
-
+// überprüft ob die übergebene Liga aktuell genutzt wird
 function checkLeagueUsage($league)
 {
     $dbCon = db_connect();
@@ -99,7 +100,7 @@ function checkLeagueUsage($league)
     return $count["isUsed"];
 }
 
-
+// erstellt einen neue Liga
 function createLeague($league)
 {
     $dbCon = db_connect();

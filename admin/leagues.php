@@ -1,15 +1,16 @@
 <?php
-require_once '../config.php';
-require_once '../auth.php';
+require_once dirname(__FILE__) .'/../config/default.php'; // Enthält Session Funktionen und StandardFarben
+require_once dirname(__FILE__) .'/../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
+// für nicht admins ist der Zugang nicht gestattet
 if (!isAdmin()) {
     die();
 }
-require_once 'leagues_db_functions.php';
-require_once 'seasons_db_functions.php';
-$success = false;
+require_once dirname(__FILE__) .'/../lib/lib_leagues.php';
+require_once dirname(__FILE__) .'/../lib/lib_seasons.php';
+$error = false;
 
 if (isset($_POST["action"]) && isset($_POST["league"]) && $_POST["action"] == "Speichern") {
-    $success = updateLeagues($_POST["league"]);
+    $error = updateLeagues($_POST["league"]);
 }
 ?>
 <!doctype html>
@@ -17,7 +18,7 @@ if (isset($_POST["action"]) && isset($_POST["league"]) && $_POST["action"] == "S
 
 <head>
     <?php
-    include '../layout/header.html';
+    include dirname(__FILE__). '/../layout/header.html';
     ?>
 
     <title>Liga Administration - Ligen</title>
@@ -25,7 +26,7 @@ if (isset($_POST["action"]) && isset($_POST["league"]) && $_POST["action"] == "S
 
 <body>
     <!-- NAVIGATION -->
-    <?php include "../navigation.php"; ?>
+    <?php include dirname(__FILE__). "/../navigation.php"; ?>
 
     <!-- CONTENT -->
     <div class="container">
@@ -49,7 +50,7 @@ if (isset($_POST["action"]) && isset($_POST["league"]) && $_POST["action"] == "S
                                 <?php
                                 $seasons = getSeasons();
 
-
+                                $key = 0;
                                 foreach (getLeagues() as $key => $league) {
                                 ?>
 
@@ -111,10 +112,10 @@ if (isset($_POST["action"]) && isset($_POST["league"]) && $_POST["action"] == "S
                         </div>
                         <button class="btn btn-lg btn-primary btn-block" name="action" type="submit" value="Speichern">Speichern</button>
                         <?php
-                        if ($success === true) {
+                        if ($error === false && isset($_POST["action"])) {
                             echo ('<p class="alert-success">Alle Ligen wurden erfolgreich aktualisiert</p>');
                         } else if (isset($_POST["action"])) {
-                            echo ('<p class="alert alert-danger">' . $success . '</p>');
+                            echo ('<p class="alert alert-danger">' . $error . '</p>');
                         }
                         ?>
                     </form>
@@ -125,7 +126,7 @@ if (isset($_POST["action"]) && isset($_POST["league"]) && $_POST["action"] == "S
 </body>
 <footer>
     <?php
-    include '../layout/footer.html';
+    include dirname(__FILE__). '/../layout/footer.html';
     ?>
 
 </footer>

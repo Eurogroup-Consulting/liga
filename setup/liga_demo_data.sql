@@ -6,6 +6,7 @@
 -- Generation Time: Jul 16, 2020 at 11:33 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
+-- inserts demo data into liga db tables
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;

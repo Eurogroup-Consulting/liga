@@ -1,12 +1,12 @@
 <?php 
-    require_once 'config.php'; // Liga-Standard immer einbinden !!
-    require_once 'auth_db_functions.php'; // enthält PHP Liga-Login-Funktion
+    require_once dirname(__FILE__). '/config/default.php'; // Liga-Standard immer einbinden !!
+    require_once dirname(__FILE__). '/lib/lib_auth.php'; // enthält PHP Liga-Login-Funktion
 ?>
 
 <!doctype html>
 <html>
 <head>
-<?php    include 'layout/header.html';    ?>
+<?php    include dirname(__FILE__). '/layout/header.html';    ?>
 
     <title>Liga Login</title>
 </head>
@@ -36,10 +36,10 @@
 ?>
 
 <!-- Custom styles for this template -->
-<link href="./css/liga_signin.css" rel="stylesheet">
+<link href="./assets/css/liga_signin.css" rel="stylesheet">
 <body class="text-center">
         <form class="form-signin" action="./loginform.php" method="POST">
-            <img class="mb-4" src="./images/LigaLogo60r.png" alt="" width="60" height="60">
+            <img class="mb-4" src="./assets/images/LigaLogo60r.png" alt="" width="60" height="60">
             <h1 class="h3 mb-3 font-weight-normal">Liga-Login</h1>
             <label class="sr-only">E-Mail:</label>
             <input class="form-control" name="loginname" type="email" placeholder="Email-Addresse" value="<?php echo $email?>" required autofocus>
@@ -62,8 +62,6 @@
                 }
                 if ($email!="" && $loginsucess==FALSE){
                     echo ('<p class="alert alert-danger">Benutzername oder Passwort falsch</p>');
-                    //echo ('<div class="alert alert-danger"> A simple danger alert—check it out! 
-                  // </div>')
                 }
                 ?>
 

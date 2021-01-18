@@ -1,13 +1,14 @@
 <?php
     
-require_once 'liga_db_functions.php';
+require_once dirname(__FILE__) .'/lib_liga.php';
  
+// lädt die aktuellen daten des rankings
 function rankdata($ligaid) {
     
     $dbConRanking= db_connect();
     
 
-    $qryTeams=QUERY_TEAMS; //Definiert in liga_db_functions
+    $qryTeams=QUERY_TEAMS; //Definiert in lib_liga
     $stmnt_Teams=$dbConRanking->prepare($qryTeams);
     $stmnt_Teams->bind_param('i',$ligaid);
     $stmnt_Teams->execute();
@@ -17,7 +18,7 @@ function rankdata($ligaid) {
         $teams[$team["TeamID"]]=$team["Teamname"];
     }
 
-    $qryRanking=QUERY_KUMKW; //Definiert in liga_db_functions
+    $qryRanking=QUERY_KUMKW; //Definiert in lib_liga
     $stmnt=$dbConRanking->prepare($qryRanking); 
     $stmnt->bind_param('i',$ligaid);
     $stmnt->execute();
@@ -69,3 +70,24 @@ function rankdata($ligaid) {
     return $return;  
 }
 
+function getLigaInfos(){
+    $dbCon= db_connect();
+    $qryLigen="SELECT ID, LigaName FROM ligen ORDER By LigaName";
+    $stligen=$dbCon->prepare($qryLigen);
+    $stligen->execute();
+    $res = $stligen->get_result();
+    $leagues = $res->fetch_all(MYSQLI_ASSOC);
+    return $leagues;
+
+}
+
+function getRanking($ligaid){
+    $dbCon= db_connect();
+    $qryRanking=QUERY_RANKING; //Definiert in lib_liga
+    $stmnt=$dbCon->prepare($qryRanking); 
+    $stmnt->bind_param('i',$ligaid);
+    $stmnt->execute();
+    $res = $stmnt->get_result();
+    $ranks = $res->fetch_all(MYSQLI_ASSOC);
+    return $ranks;
+}

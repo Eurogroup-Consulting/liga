@@ -1,10 +1,11 @@
 <?php
-require_once '../config.php';
-require_once '../auth.php';
+require_once dirname(__FILE__) .'/../config/default.php'; // Enthält Session Funktionen und StandardFarben
+require_once dirname(__FILE__) .'/../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
+// für nicht admins ist der Zugang nicht gestattet
 if (!isAdmin()) {
     die();
 }
-require_once 'seasons_db_functions.php';
+require_once dirname(__FILE__) .'/../lib/lib_seasons.php';
 $success = false;
 if (isset($_POST["action"]) && isset($_POST["season"]) && $_POST["action"] == "Speichern") {
     $success = updateSeasons($_POST["season"]);
@@ -15,7 +16,7 @@ if (isset($_POST["action"]) && isset($_POST["season"]) && $_POST["action"] == "S
 
 <head>
     <?php
-    include '../layout/header.html';
+    include dirname(__FILE__). '/../layout/header.html';
     ?>
 
     <title>Liga Administration - Saisons</title>
@@ -23,7 +24,7 @@ if (isset($_POST["action"]) && isset($_POST["season"]) && $_POST["action"] == "S
 
 <body>
     <!-- NAVIGATION -->
-    <?php include "../navigation.php"; ?>
+    <?php include dirname(__FILE__). "/../navigation.php"; ?>
 
     <!-- CONTENT -->
     <div class="container">
@@ -46,6 +47,7 @@ if (isset($_POST["action"]) && isset($_POST["season"]) && $_POST["action"] == "S
 
                                 <?php
                                 $seasons = getSeasons();
+                                $key = 0;
                                 foreach ($seasons as $key => $season) {
                                 ?>
                                     <tr>
@@ -113,7 +115,7 @@ if (isset($_POST["action"]) && isset($_POST["season"]) && $_POST["action"] == "S
 </body>
 <footer>
     <?php
-    include '../layout/footer.html';
+    include dirname(__FILE__). '/../layout/footer.html';
     ?>
 </footer>
 

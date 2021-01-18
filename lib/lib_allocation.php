@@ -1,6 +1,6 @@
 <?php
 
-require_once '../liga_db_functions.php'; //enthält Funktionen zur Datenbankverbindung
+require_once dirname(__FILE__) .'/lib_liga.php'; //enthält Funktionen zur Datenbankverbindung
 
 // Holt alle Zuordnungen aus der Datenbank
 function getAllocations()
@@ -93,6 +93,7 @@ function deleteAllocation($allocation)
     return $success;
 }
 
+// prüft ob die übergebene allocation in benutzung ist
 function checkAllocationUsage($allocation)
 {
     $dbCon = db_connect();

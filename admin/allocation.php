@@ -1,13 +1,15 @@
 <?php
-require_once '../config.php'; // Enthält Session Funktionen und StandardFarben
-require_once '../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
+require_once dirname(__FILE__) .'/../config/default.php'; // Enthält Session Funktionen und StandardFarben
+require_once dirname(__FILE__) .'/../auth.php'; // Enthält Überprüfungen für Login und Admin Rechte
+
+// für nicht admins ist der Zugang nicht gestattet
 if (!isAdmin()) {
     die();
 }
-require_once 'allocation_db_functions.php'; // Enthält Zuordnungs-Datenbank-Funktionen 
+require_once dirname(__FILE__) .'/../lib/lib_allocation.php'; // Enthält Zuordnungs-Datenbank-Funktionen 
 $success = false;
 
-// Diese Funktion wird nur ncah dem Absenden der Formulardaten aufgerufen 
+// Diese Funktion wird nur naah dem Absenden der Formulardaten aufgerufen 
 if (isset($_POST["action"]) && isset($_POST["allocations"]) && $_POST["action"] == "Speichern") {
     $success = updateAllocations($_POST["allocations"]);
 }
@@ -17,7 +19,7 @@ if (isset($_POST["action"]) && isset($_POST["allocations"]) && $_POST["action"] 
 
 <head>
     <?php
-    include '../layout/header.html';
+    include dirname(__FILE__). '/../layout/header.html';
     ?>
 
     <title>Liga Administration - Zuordnung</title>
@@ -25,7 +27,7 @@ if (isset($_POST["action"]) && isset($_POST["allocations"]) && $_POST["action"] 
 
 <body>
     <!-- NAVIGATION -->
-    <?php include "../navigation.php"; ?>
+    <?php include dirname(__FILE__). "/../navigation.php"; ?>
 
     <!-- CONTENT -->
     <div class="container">
@@ -55,6 +57,7 @@ if (isset($_POST["action"]) && isset($_POST["allocations"]) && $_POST["action"] 
                                     $groupOptions .= '<option value="' . $group . '"  > ' . $group . ' </option>';
                                 }
                                 // Erlaubt das Bearbeiten der bestehenden Zuordnungen
+                                $key = 0;
                                 foreach (getAllocations() as $key => $allocation) {
                                 ?>
 
@@ -83,7 +86,7 @@ if (isset($_POST["action"]) && isset($_POST["allocations"]) && $_POST["action"] 
                                 <?php
                                 }
                                 ?>
-                                <!-- erlaiubt das Anlegen einer neuen Zuordnung -->
+                                <!-- erlaubt das Anlegen einer neuen Zuordnung -->
                                 <tr>
                                     <td class="text-truncate">
                                         <input type="text" class="form-control" name="allocations[<?= $key + 1 ?>][Kurzbezeichnung]" value="">
@@ -125,7 +128,7 @@ if (isset($_POST["action"]) && isset($_POST["allocations"]) && $_POST["action"] 
 </body>
 <footer>
     <?php
-    include '../layout/footer.html';
+    include dirname(__FILE__). '/../layout/footer.html';
     ?>
 
 </footer>
