@@ -30,6 +30,6 @@ define('TEAM_COLORS', array(
 );
 // Funktion zum Abfangen eines Fehlers bei nicht vorhandener Farbe
 function getTeamColor($c){
-    return (count(TEAM_COLORS)>$c?TEAM_COLORS[$c]:TEAM_COLORS[count($c)-1]);
+    return (count(TEAM_COLORS) > $c ? TEAM_COLORS[$c] : TEAM_COLORS[count(TEAM_COLORS) - 1]);
 }
 ?>

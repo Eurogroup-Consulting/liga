@@ -23,7 +23,7 @@ function importCSV($filename, $week)
     if (($handle = fopen($filename, "r")) !== FALSE) {
 
         // Liest die Header Zeile des CSVs aus
-        $keys = fgetcsv($handle, 0, ";");
+        $keys = fgetcsv($handle, 0, ";", '"', '');
 
         // Setzt die aktuelle Woche aus der Daten Tabelle zurück indem die einträge gelöscht werden
         deleteWeekData($week);
@@ -33,14 +33,14 @@ function importCSV($filename, $week)
             $arr = [];
 
             // Liest die aktuelle CSV Zeile aus
-            $val =  fgetcsv($handle, 0, ";");
+            $val = fgetcsv($handle, 0, ";", '"', '');
 
             // Prüft ob diese Zeile Daten enthält
             if ($val) {
                 // Erstelle das zu updatende Array
                 for ($i = 0; $i < count($keys); $i++) {
                     // Encoding wird benötigt für alle Sonderzeichen Fälle (Ä/Ö/Ü...)
-                    $arr[$keys[$i]] = utf8_encode($val[$i]);
+                    $arr[$keys[$i]] = mb_convert_encoding($val[$i], 'UTF-8', 'ISO-8859-1');
                 }
             }
             // Falls die Zeile nicht alle Daten enthält wird sie überprungen

@@ -63,7 +63,7 @@ if (isset($_POST["action"]) && isset($_POST["AktSaisonID"]) && isset($_POST["tea
                                 <select class="custom-select" id="seasonSelect" name="AktSaisonID">
                                     <?php
                                     foreach (getSeasons() as $key => $season) {
-                                        if ($_POST["AktSaisonID"]) {
+                                        if (isset($_POST["AktSaisonID"]) && $_POST["AktSaisonID"]) {
                                             $selected = $_POST["AktSaisonID"] == $season["ID"] ? "selected" : "";
                                         } else {
                                             $selected = $league["AktSaisonID"] == $season["ID"] ? "selected" : "";

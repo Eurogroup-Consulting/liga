@@ -51,7 +51,7 @@ $maks = getMAKsWithTeamName();
                             <select class="custom-select" id="seasonSelect" name="AktSaisonID">
                                 <?php
                                 foreach ($seasons as $key => $season) {
-                                    if ($_POST["AktSaisonID"]) {
+                                    if (isset($_POST["AktSaisonID"]) && $_POST["AktSaisonID"]) {
                                         $selected = $_POST["AktSaisonID"] == $season["ID"] ? "selected" : "";
                                     }
                                     echo ('<option value="' . $season["ID"] . '" ' . $selected . '  >' . $season["SaisonBezeichnung"] . '</option>');
@@ -65,7 +65,7 @@ $maks = getMAKsWithTeamName();
                             <select class="custom-select" id="weekSelect" name="MatchWeekID">
                                 <?php
                                 foreach ($weeks as $key => $week) {
-                                    if ($_POST["MatchWeekID"]) {
+                                    if (isset($_POST["MatchWeekID"]) && $_POST["MatchWeekID"]) {
                                         $selected = $_POST["MatchWeekID"] == $week["ID"] ? "selected" : "";
                                     }
                                     echo ('<option value="' . $week["ID"] . '" ' . $selected . '  >' . $week["SpielwochenNr"] . '</option>');

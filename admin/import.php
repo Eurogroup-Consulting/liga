@@ -10,7 +10,7 @@ require_once dirname(__FILE__) .'/../lib/lib_seasons.php'; // Enthält Saison-Da
 require_once dirname(__FILE__) .'/../lib/lib_maks.php'; // Enthält MAK-Datenbank-Funktionen (inklusive der Spielwochen)
 require_once dirname(__FILE__) .'/../lib/lib_liga.php'; // Enthält Grundlegenden Datenbank Funktionen
 
-if (isset($_POST["action"]) && isset($_FILES["csvFile"]) && !empty($_FILES["csvFile"]["tmp_name"]) && $_POST["week"] && $_POST["action"] == "Speichern") {
+if (isset($_POST["action"], $_POST["week"], $_FILES["csvFile"]) && !empty($_FILES["csvFile"]["tmp_name"]) && $_POST["week"] && $_POST["action"] == "Speichern") {
     $errors = importCSV($_FILES["csvFile"]["tmp_name"], $_POST["week"]);
 }
 
